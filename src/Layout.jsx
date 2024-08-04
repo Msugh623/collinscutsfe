@@ -10,7 +10,7 @@ import Contact from './pages/Contact'
 import Admin from './pages/Admin'
 
 const AppLayout = () => {
-
+    const { err } = useStateContext()
     return (
         <main>
             <header>
@@ -29,6 +29,9 @@ const AppLayout = () => {
                         <Route path='/Admin' element={<Admin />} />
                     </Route>
                 </Routes>
+                <div className="custom-navmenu text-center text-light fixed-bottom">
+                    {err}
+                </div>
             </section>
         </main>
     )

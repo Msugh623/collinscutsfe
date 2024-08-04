@@ -1,42 +1,60 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Creations from './Creations'
+import { BiEnvelope, BiHome, BiUser, BiVideo } from 'react-icons/bi'
+import { BsViewStacked } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
+import Nav from '../components/Nav'
+import ClientBar from '../components/ClientBar'
 
 const Index = () => {
+    const [sh, setSh] = useState(scrollY)
+
+    useEffect(() => {
+        onscroll = () => {
+            setSh(scrollY)
+        }
+    }, [])
     return (
         <div className="index-page">
-
+            <div className="fixed-top">
+                {
+                    sh > 550 &&
+                    <div className="slideIn">
+                        <Nav />
+                    </div>
+                }
+            </div>
             <header id="header" className="header d-flex flex-column justify-content-center">
-
-                <i className="header-toggle d-xl-none bi bi-list"></i>
-
-                <nav id="navmenu" className="navmenu">
-                    <ul>
-                        <li><a href="#hero" className="active"><i className="bi bi-house navicon"></i><span>Home</span></a></li>
-                        <li><a href="#about"><i className="bi bi-person navicon"></i><span>About</span></a></li>
-                        <li><a href="#resume"><i className="bi bi-file-earmark-text navicon"></i><span>Resume</span></a></li>
-                        <li><a href="#portfolio"><i className="bi bi-images navicon"></i><span>Portfolio</span></a></li>
-                        <li><a href="#services"><i className="bi bi-hdd-stack navicon"></i><span>Services</span></a></li>
-                        <li><a href="#contact"><i className="bi bi-envelope navicon"></i><span>Contact</span></a></li>
-                    </ul>
-                </nav>
-
+                {
+                    sh < 550 &&
+                    <nav id="navmenu" className="navmenu slideIn">
+                        <ul>
+                            <li><Link to="/#hero" className="active"><i className="bi bi-house navicon"><BiHome className='icon' /></i><span>Home</span></Link></li>
+                            <li><Link to="/creations"><i className="bi bi-images navicon"><BiVideo className='icon' /></i><span>Creations</span></Link></li>
+                            <li><a href="#services"><i className="bi bi-hdd-stack navicon"><BsViewStacked className='icon' /></i><span>Services</span></a></li>
+                            <li><Link to="/contact"><i className="bi bi-envelope navicon"><BiEnvelope className='icon' /></i><span>Contact</span></Link></li>
+                        </ul>
+                    </nav>
+                }
             </header>
 
             <main className="main">
-                <section id="hero" className="hero section light-background">
+                <section id="hero" className="hero section dark-background">
 
-                    <img src="assets/img/hero-bg.jpg" alt="" />
+                    <img src="/media/hero.jpg" alt="" />
 
                     <div className="container" data-aos="zoom-out">
-                        <div className="row justify-content-center">
-                            <div className="col-lg-9">
-                                <h2>Brandon Johnson</h2>
-                                <p>I'm <span className="typed" data-typed-items="Designer, Developer, Freelancer, Photographer">Designer</span><span className="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
-                                <div className="social-links">
-                                    <a href="#"><i className="bi bi-twitter-x"></i></a>
-                                    <a href="#"><i className="bi bi-facebook"></i></a>
-                                    <a href="#"><i className="bi bi-instagram"></i></a>
-                                    <a href="#"><i className="bi bi-linkedin"></i></a>
+                        <div className='ms-sm-5 ps-sm-5 ps-lg-0 ms-lg-0'>
+                            <div className="row justify-content-center">
+                                <div className="col-lg-9">
+                                    <h2 className='slideIn'>Chia Collins</h2>
+                                    <p>I'm <span className="typed slideUp" data-typed-items="Designer, Developer, Freelancer, Photographer">Designer</span><span className="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+                                    <div className="social-links slideUp">
+                                        <a href="#"><i className="bi bi-twitter-x"></i></a>
+                                        <a href="#"><i className="bi bi-facebook"></i></a>
+                                        <a href="#"><i className="bi bi-instagram"></i></a>
+                                        <a href="#"><i className="bi bi-linkedin"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -45,9 +63,11 @@ const Index = () => {
                 </section>
 
             </main>
-            <Creations limit={6} />
+            <div className="mt-4">
+                <Creations limit={6} />
+            </div>
             <section className="section">
-                <div className="container">
+                <div className="container ">
                     <div className="row justify-content-center text-center mb-4">
                         <div className="col-5">
                             <h3 className="h3 heading">My Clients</h3>
@@ -77,7 +97,7 @@ const Index = () => {
                     </div>
                 </div>
             </section>
-            <section className="section services">
+            <section id='services' className="section services">
                 <div className="container">
                     <div className="row justify-content-center text-center mb-4">
                         <div className="col-5">
@@ -139,44 +159,7 @@ const Index = () => {
                 </div>
             </section>
 
-            <section className="section pt-0">
-                <div className="container">
-
-                    <div className="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-                        <div className="swiper-wrapper">
-
-                            <div className="swiper-slide">
-                                <div className="testimonial-wrap">
-                                    <div className="testimonial">
-                                        <img src="assets/img/person_1.jpg" alt="Image" className="img-fluid" />
-                                        <blockquote>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis
-                                                explicabo inventore.</p>
-                                        </blockquote>
-                                        <p>&mdash; Jean Hicks</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="swiper-slide">
-                                <div className="testimonial-wrap">
-                                    <div className="testimonial">
-                                        <img src="assets/img/person_2.jpg" alt="Image" className="img-fluid" />
-                                        <blockquote>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis
-                                                explicabo inventore.</p>
-                                        </blockquote>
-                                        <p>&mdash; Chris Stanworth</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className="swiper-pagination"></div>
-                    </div>
-
-                </div>
-            </section>
+            <ClientBar />
         </div >
     )
 }

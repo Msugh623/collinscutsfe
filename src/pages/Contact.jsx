@@ -1,43 +1,50 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { BiEnvelope } from 'react-icons/bi'
+import { BsFillTelephoneFill, BsWhatsapp } from 'react-icons/bs'
+import Nav from '../components/Nav'
 
 const Contact = () => {
+
+  useEffect(() => {
+    scroll(0, 0)
+  }, [])
+
   return (
-    <section id="contact" className="contact section">
+    <section id="contact" className="contact section pt-0">
+      <Nav />
 
       {/* <!-- Section Title --> */}
-      <div className="container section-title" data-aos="fade-up">
+      <div className="container section-title mt-4 growIn" data-aos="fade-up">
         <h2>Contact</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
       </div>
-      <div className="container" data-aos="fade" data-aos-delay="100">
+      <div className="container slideUp" data-aos="fade" data-aos-delay="100">
 
         <div className="row gy-4">
 
           <div className="col-lg-4">
-            <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-              <i className="bi bi-geo-alt flex-shrink-0"></i>
-              <div>
-                <h3>Address</h3>
-                <p>A108 Adam Street, New York, NY 535022</p>
-              </div>
-            </div>
-
-            <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-              <i className="bi bi-telephone flex-shrink-0"></i>
-              <div>
-                <h3>Call Us</h3>
-                <p>+1 5589 55488 55</p>
-              </div>
-            </div>
-
             <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-              <i className="bi bi-envelope flex-shrink-0"></i>
+              <i className="bi bi-envelope flex-shrink-0"><BiEnvelope /></i>
               <div>
-                <h3>Email Us</h3>
+                <h3>Email</h3>
                 <p>info@example.com</p>
               </div>
             </div>
 
+            <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+              <i className="bi bi-telephone flex-shrink-0"><BsWhatsapp /></i>
+              <div>
+                <h3>Whatsapp</h3>
+                <p>+234 705 217 2789</p>
+              </div>
+            </div>
+            <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+              <i className="bi bi-telephone flex-shrink-0"><BsFillTelephoneFill /></i>
+              <div>
+                <h3>Phone</h3>
+                <p>+234 706 064 4682</p>
+              </div>
+            </div>
           </div>
 
           <div className="col-lg-8">

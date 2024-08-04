@@ -1,43 +1,50 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useStateContext } from '../state/StateContext'
+import Nav from '../components/Nav'
+import { Link } from 'react-router-dom'
 
 const Creations = () => {
-  const { creations, fetchRsc } = useStateContext()
+  const { creations, fetchRsc, filters } = useStateContext()
+  
+  const [prs, setPrs] = useState(creations)
+  const [filter, setFilter] = useState('All')
+
+
+  useEffect(() => {
+    filter == 'All' ?
+      setPrs(creations)
+      : setPrs(creations.filter(cr => cr.category == filter))
+  }, [filter])
 
   useEffect(() => {
     fetchRsc()
+    scroll(0, 0)
   }, [])
 
   return (
-    <main id="mai">
-      <section className="section site-portfolio">
+    <main id="main">
+      {location.pathname !== '/' && <Nav />}
+      <section className="section site-portfolio pt-5">
         <div className="container">
           <div className="row mb-5 align-items-center">
             <div className="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
-              <h2>Hey, I'm Johan Stanworth</h2>
-              <p className="mb-0">Freelance Creative &amp; Professional Graphics Designer</p>
+              <h2>Hey, I'm Chia Collins</h2>
+              <p className="mb-0">Freelance Video Editor &; Professional Graphics Designer</p>
             </div>
             <div className="col-md-12 col-lg-6 text-start text-lg-end" data-aos="fade-up" data-aos-delay="100">
               <div id="filters" className="filters">
-                <a href="#" data-filter="*" className="active">All</a>
-                <a href="#" data-filter=".web">Web</a>
-                <a href="#" data-filter=".design">Design</a>
-                <a href="#" data-filter=".branding">Branding</a>
-                <a href="#" data-filter=".photography">Photography</a>
+                <a href="#All" data-filter="*" className={'' + (filter == 'All' && 'active')} onClick={() => setFilter('All')}>All</a>
+                {
+                  filters.map(filter => {
+                    return <a href={`#${filter}`} data-filter={`.${filter}`} className={'' + (filter == filter && 'active')} onClick={() => setFilter(filter)}>{filter}</a>
+                  })
+                }
               </div>
             </div>
           </div>
-          <div id="portfolio-grid" className="row no-gutter" data-aos="fade-up" data-aos-delay="200"> 
-            {creations.map(cr => {
-             return <div ke={cr.id} className="item web col-sm-6 col-md-4 col-lg-4 mb-4">
-                <a href="work-single.html" className="item-wrap fancybox">
-                  <div className="work-info">
-                    <h3>{cr?.name}</h3>
-                    <span>{cr?.category}</span>
-                  </div>
-                  <img className="img-fluid" src={cr?.thumbnail} />
-                </a>
-              </div>
+          <div id="portfolio-grid" className="row no-gutter" data-aos="fade-up" data-aos-delay="200">
+            {prs.map(cr => {
+              return <CreationCard key={cr.id} creation={cr} />
             })}
           </div>
         </div>
@@ -47,3 +54,16 @@ const Creations = () => {
 }
 
 export default Creations
+
+const CreationCard = ({ creation }) => {
+
+  return <div className="item web col-sm-6 col-md-4 col-lg-4 mb-4" >
+    <Link to={`/creation/${creation.id}`} className="item-wrap fancybox">
+      <img className="img-fluid" src={creation?.thumbnail} />
+      <div className="work-info text-light">
+        <h3>{creation?.name}</h3>
+        <span>{creation?.category}</span>
+      </div>
+    </Link>
+  </div>
+}
