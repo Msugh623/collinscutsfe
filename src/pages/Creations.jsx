@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const Creations = () => {
   const { creations, fetchRsc, filters } = useStateContext()
-  
+
   const [prs, setPrs] = useState(creations)
   const [filter, setFilter] = useState('All')
 
@@ -14,11 +14,10 @@ const Creations = () => {
     filter == 'All' ?
       setPrs(creations)
       : setPrs(creations.filter(cr => cr.category == filter))
-  }, [filter])
+  }, [filter, creations])
 
   useEffect(() => {
     fetchRsc()
-    scroll(0, 0)
   }, [])
 
   return (
@@ -35,8 +34,8 @@ const Creations = () => {
               <div id="filters" className="filters">
                 <a href="#All" data-filter="*" className={'' + (filter == 'All' && 'active')} onClick={() => setFilter('All')}>All</a>
                 {
-                  filters.map(filter => {
-                    return <a href={`#${filter}`} data-filter={`.${filter}`} className={'' + (filter == filter && 'active')} onClick={() => setFilter(filter)}>{filter}</a>
+                  filters.map(flt => {
+                    return <a key={flt.id} href={`#${flt.name}`} data-flt={`.${flt.name}`} className={'' + (flt.name == filter && 'active')} onClick={() => setFilter(filter.name)}>{filter.name}</a>
                   })
                 }
               </div>

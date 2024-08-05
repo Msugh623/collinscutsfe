@@ -1998,7 +1998,7 @@ path {
 .downCard {
     transition: all, .2s;
     position: relative;
-    top: 30px;
+    top: 40px;
     padding: 20px;
 }
 
@@ -2006,6 +2006,67 @@ path {
     box-shadow: 0 20px 2rem rgba(0, 0, 0, 0.175) !important
 }
 
-.ani{
+.ani {
     transition: all, .2s;
+}
+
+@keyframes slideCard {
+    0% {
+        position: relative;
+        bottom: 0px;
+        top: 40px;
+    }
+
+    20% {
+        position: relative;
+        bottom: 10px;
+        top: 0px;
+    }
+
+    90% {
+        position: relative;
+        bottom: 10px;
+        top: 0px;
+    }
+
+    100% {
+        position: relative;
+        bottom: 0px;
+        top: 40px;
+    }
+}
+
+
+.slidecard {
+    animation: slideCard 3s cubic-bezier(0.075, 0.165, 0.165, 1) !important;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+#marquee {
+    width: 100%;
+    overflow: hidden;
+}
+
+#marquee .leftPanel {
+    position: absolute;
+    left: 0px;
+    background: linear-gradient(90deg, #ffffff 20%, #efefef00 80%);
+    padding: 200px 100px; 
+}
+
+#marquee .rightPanel {
+    position: absolute;
+    right: 0px;
+    background: linear-gradient(90deg, #efefef00 20%, #ffffff 80%);
+    padding: 200px 100px; 
 }

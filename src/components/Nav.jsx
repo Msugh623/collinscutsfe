@@ -8,6 +8,9 @@ const Nav = (props) => {
             {hasPop &&
                 <nav className="navbar text-light custom-navmenu  pt-0 growIn">
                     <div className="container py-4 ">
+                        {/* <div className='col-5 small'>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, iste corrupti blanditiis nostrum perspiciatis minus labore ullam dolores reiciendis nesciunt ab ipsum repellendus, laudantium atque quia dicta quisquam, inventore voluptatibus.
+                        </div> */}
                         <div className="ms-auto me-2 ">
                             <Link to={'/'} className='me-1 rounded btn'>Home</Link>
                             <Link to={'/creations'} className='me-1 rounded btn'>Creations</Link>

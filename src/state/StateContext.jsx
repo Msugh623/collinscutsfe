@@ -48,10 +48,7 @@ const StateContext = ({ children }) => {
     const [filters, setFilters] = useState([])
     const [err, setErr] = useState('')
     const [isLooking, setIsLooking] = useState(false)
-    const [card1, setCard1] = useState(clients[0])
-    const [card2, setCard2] = useState(clients[1])
-    const [card3, setCard3] = useState(clients[2])
-    const [toPop, setToPop] = useState(1)
+    const [toPop, setToPop] = useState(0)
     const [twitch, setTwitch] = useState(Number(new Date()))
 
     const fetchRsc = async () => {
@@ -65,16 +62,13 @@ const StateContext = ({ children }) => {
         }
     }
     const func = () => {
-        const clientnum = clients.length
-        const cardSet = [setCard1, setCard2, setCard3]
         setToPop(prev => {
             const a = prev + 1
-            const b = prev >= 3 ? 1 : a; 
-            (cardSet[b-1])(clients[Math.floor(Math.random() * clientnum)])
+            const b = prev >= clients.length - 1 ? 0 : a;
             return b
         })
-        console.log(toPop)
     }
+
     useEffect(() => {
         fetchRsc()
         const interval = setInterval(() => {
@@ -83,7 +77,7 @@ const StateContext = ({ children }) => {
         // return clearInterval(interval)
     }, [])
     useEffect(() => {
-        func()
+        !isLooking && func()
     }, [twitch])
     useEffect(() => {
         err && setTimeout(() => {
@@ -102,12 +96,6 @@ const StateContext = ({ children }) => {
         clients,
         isLooking,
         setIsLooking,
-        card1,
-        setCard1,
-        card2,
-        setCard2,
-        card3,
-        setCard3,
         toPop,
         setToPop
     }}>
