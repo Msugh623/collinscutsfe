@@ -67,7 +67,7 @@ const Index = () => {
                             <div className="row justify-content-center">
                                 <div className="col-lg-9">
                                     <h2 className='slideIn'>Chia Collins</h2>
-                                    <p>I'm <Replacer arr={['Designer', 'Video Editor', 'Freelancer']} /></p>
+                                    <p>I'm a <Replacer arr={['Designer', 'Video Editor', 'Freelancer']} /></p>
                                     <div className="social-links slideUp">
                                         <Delay inline={true} delay={1500}>
                                             <a className='slideIn' href="#"><PiXLogo /></a>

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useStateContext } from '../state/StateContext'
 import Nav from '../components/Nav'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import api from '../../axios/api'
 import { toast } from 'react-toastify'
 import { FaTrash } from 'react-icons/fa'
@@ -9,7 +9,6 @@ import { BiChalkboard, BiLink, BiX } from 'react-icons/bi'
 
 const AdminMessages = () => {
     const { messages, setErr, setMessages, setPop, pop } = useStateContext()
-
     const getMessages = async () => {
         try {
             const res = await api.get('/messages')
@@ -25,7 +24,7 @@ const AdminMessages = () => {
     return (
         <main id="main" className='mb-5'>
             {<Nav />}
-            <h2 className="text-center mt-4"><BiChalkboard className='icon me-1 fs-1'/>Admin</h2>
+            <h2 className="text-center mt-4"><BiChalkboard className='icon me-1 fs-1' />Admin</h2>
             <section className="section site-portfolio py-5">
                 <div className="container">
                     <div className="row mb-5">
@@ -38,20 +37,24 @@ const AdminMessages = () => {
                     </div>
                     <div id="portfolio-grid" className="row no-gutter" data-aos="fade-up" data-aos-delay="200">
                         {messages.map(msg => {
-                            return <div key={msg.id} className='tem web col-sm-6 col-md-4 col-lg-4 mb-4' >
-                                <Link onClick={setPop(<Message message={msg} />)} className="item-wrap rounded shadow growUp" >
-                                    <div className=''>
+                            return <div key={msg.id} className='tem web col-sm-6 col-lg-4 mb-4' >
+                                <Link onClick={() => setPop(<Message message={msg} />)} className="item-wrap rounded  growUp" >
+                                    <div className='shadow-lg rounded'>
                                         <div className="p-2 ">
                                             <h5 className=''>{msg?.fullname}</h5>
-                                            <h4 className="">
+                                            <h6 className="">
                                                 {msg?.subject}
-                                            </h4>
+                                            </h6>
                                             <pre className="pre" style={{
                                                 textOverflow: 'clip',
-                                                whiteSpace: 'pre-wrap'
+                                                whiteSpace: 'pre-wrap',
+                                                fontFamily: 'inherit'
                                             }}>
                                                 {msg.body.split(' ').slice(0, 30).join(' ')}...
                                             </pre>
+                                            <div className='text-muted'>
+                                                {(new Date(Number(msg?.id)).toDateString())}
+                                            </div>
                                         </div>
                                     </div>
                                 </Link>
@@ -68,6 +71,7 @@ export default AdminMessages
 
 const Message = ({ message }) => {
     const { setPop } = useStateContext()
+    const navigate = useNavigate()
 
     return <div className="col-12 col-sm-11 col-md-8 col-lg-6 mb-4 mx-auto mt-3 mt-sm-5">
         <div className="item-wrap rounded shadow growUp bg-light m-3 text-dark">

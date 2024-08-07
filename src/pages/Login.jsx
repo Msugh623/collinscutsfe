@@ -40,10 +40,10 @@ const Login = () => {
                         <h3 className="m-auto my-3">Admin Login</h3>
                     </div>
                     <div className="form-group mb-3">
-                        <input type="email" className="form-control" name='email' onChange={handleInput} value={data.email} required />
+                        <input type="email" className="form-control border" name='email' onChange={handleInput} value={data.email} required placeholder='Email'/>
                     </div>
                     <div className="form-group">
-                        <input type="password" name='password' className="form-control" onChange={handleInput} value={data.password} required />
+                        <input type="password" name='password' className="form-control border" onChange={handleInput} value={data.password} required placeholder='Password'/>
                     </div>
                     <button className='readmore custom-navmenu text-light growIn my-3'>
                         Login

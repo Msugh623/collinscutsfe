@@ -10,7 +10,7 @@ const Loader = () => {
             <div className="d-flex">
                 <div className="mx-auto">
                     <h1 className='ani'>
-                        <FaSpinner className='spinner' />
+                        <FaSpinner className='spinner icon' />
                         <Delay inline={true} delay={0}>
                             <span className="slideUp"> Collins</span>
                         </Delay>
