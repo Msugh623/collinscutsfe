@@ -37,13 +37,14 @@ const ClientBar = () => {
 export default ClientBar
 
 const ReviewCard = ({ review, glow, i }) => {
-    const [text, setText] = useState(review.review)
+    const [text, _] = useState(review.review)
     const { toPop } = useStateContext()
 
     useEffect(() => {
         const mk = document.getElementById('marquee')
         if (glow) {
-            mk.scroll({ left: (toPop * 320)-window.innerWidth/6, behavior: 'smooth' }) 
+            const val = window.innerWidth / 6
+            mk.scroll({ left: (toPop * 320) - (val < 90 ? 12 : val), behavior: 'smooth' })
         }
     }, [toPop])
 

@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import { BiEnvelope } from 'react-icons/bi'
+import { BiEnvelope, BiLink } from 'react-icons/bi'
 import { BsFillTelephoneFill, BsWhatsapp } from 'react-icons/bs'
 import Nav from '../components/Nav'
 import { useStateContext } from '../state/StateContext'
 import { FaCheckCircle, FaPaperPlane, FaTimesCircle } from 'react-icons/fa'
 import api from '../../axios/api'
+import { useSearchParams } from 'react-router-dom'
 
 const Contact = () => {
   const { setErr } = useStateContext()
+  const [as] = useSearchParams()
   const [newData, setNewData] = useState({
+    id: Date.now() + '',
     fullname: '',
     email: '',
     subject: '',
-    message: ''
+    body: '',
+    attachment: as.get('a') || ''
   })
   const [isSending, setIsSending] = useState(false)
 
@@ -28,10 +32,10 @@ const Contact = () => {
     e.preventDefault()
     try {
       setIsSending(true)
-      const res = await api.get('/messages', {
+      const res = await api.post('/messages', {
         ...newData
       })
-      setIsSending('success')
+      setIsSending('sent')
       setErr(<div><span className="text-success icon"><FaCheckCircle /></span> {res?.message || 'Message Sent'}</div>)
     } catch (err) {
       setIsSending(false)
@@ -65,14 +69,14 @@ const Contact = () => {
               </div>
             </a>
 
-            <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="300" onClick={() => navigator.clipboard.write('+234 705 217 2789')}>
+            <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="300" onClick={() => { setErr('copied +234 705 217 2789'); navigator.clipboard.write('+234 705 217 2789') }}>
               <i className="bi bi-telephone flex-shrink-0"><BsWhatsapp /></i>
               <div>
                 <h3>Whatsapp</h3>
                 <p>+234 705 217 2789</p>
               </div>
             </div>
-            <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="300" onClick={() => navigator.clipboard.write('+234 706 064 4682')}>
+            <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="300" onClick={() => { setErr('copied +234 706 064 4682'); navigator.clipboard.write('+234 706 064 4682') }}>
               <i className="bi bi-telephone flex-shrink-0"><BsFillTelephoneFill /></i>
               <div>
                 <h3>Phone</h3>
@@ -87,19 +91,24 @@ const Contact = () => {
                 <div className="row gy-4">
 
                   <div className="col-md-6">
-                    <input type="text" name="fullname" value={newData.fullname} onChange={handleChange} className="form-control" placeholder="Your Name" required />
+                    <input type="text" name="fullname" value={newData.fullname} onChange={handleChange} className="form-control shadow-sm" placeholder="Your Name" required />
                   </div>
 
                   <div className="col-md-6 ">
-                    <input type="email" className="form-control" name="email" value={newData.email} onChange={handleChange} placeholder="Your Email" required />
+                    <input type="email" className="form-control shadow-sm" name="email" value={newData.email} onChange={handleChange} placeholder="Your Email" required />
                   </div>
 
                   <div className="col-md-12">
-                    <input type="text" className="form-control" name="subject" value={newData.subject} onChange={handleChange} placeholder="Subject" required />
+                    <input type="text" className="form-control shadow-sm" name="subject" value={newData.subject} onChange={handleChange} placeholder="Subject" required />
                   </div>
 
                   <div className="col-md-12">
-                    <textarea className="form-control" name="message" value={newData.message} onChange={handleChange} rows="6" placeholder="Message" required></textarea>
+                    <textarea className="form-control shadow-sm" name="body" value={newData.body} onChange={handleChange} rows="6" placeholder="Message" required></textarea>
+                    {newData.attachment &&
+                      < div className="mt-1">
+                        <BiLink className="text-primary fs-5 icon" /> {location.origin}{newData.attachment}
+                      </div>
+                    }
                   </div>
 
                   <div className="col-md-12 text-center">
@@ -109,7 +118,7 @@ const Contact = () => {
 
                 </div>
               </form>
-              : <h3 className='slideIn'><FaPaperPlane className='text-success me-2 ' /> We have recieved your message and we will get to you as soon as possible. Thank you for contacing us.</h3>
+              : <h3 className='slideIn'><FaPaperPlane className='text-primary me-2 ' /> We have recieved your message and we will get to you as soon as possible. Thank you for contacing us.</h3>
             }
           </div>
 
@@ -117,7 +126,7 @@ const Contact = () => {
 
       </div>
 
-    </section>
+    </section >
   )
 }
 

@@ -12,9 +12,9 @@ const Nav = (props) => {
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, iste corrupti blanditiis nostrum perspiciatis minus labore ullam dolores reiciendis nesciunt ab ipsum repellendus, laudantium atque quia dicta quisquam, inventore voluptatibus.
                         </div> */}
                         <div className="ms-auto me-2 ">
-                            <Link to={'/'} className='me-1 rounded btn'>Home</Link>
+                            <Link to={'/'} className='me-1 rounded btn' onClick={() => window.scroll({ top: 0 })}>Home</Link>
                             <Link to={'/creations'} className='me-1 rounded btn'>Creations</Link>
-                            <Link to={'/#services'} className='me-1 rounded btn' onClick={() => setTimeout(() => window.scroll(0, 1300), 200)}>Services</Link>
+                            <Link to={'/#services'} className='me-1 rounded btn' onClick={() => setTimeout(() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' }), 300)}>Services</Link>
                             <Link to={'/contact'} className='me-1 rounded btn'>Contact</Link>
                         </div>
                     </div>
@@ -22,12 +22,12 @@ const Nav = (props) => {
             }
             <nav className={`navbar navbar-light custom-navbar  pt-0 ${!props.hasBg && 'bg-light'} shadow-sm`}>
                 <div className="container py-3 pb-2 px-2">
-                    <h2 className='m-0'><Link to={'/'}>Collins Cuts</Link></h2>
+                    <h2 className='m-0'><Link to={'/'} onClick={() => window.scroll({ top: 0 })}>Collins Cuts</Link></h2>
                     {!hasPop &&
                         <div className="ms-auto me-2 d-none d-md-block">
-                            <Link to={'/'} className='me-1 rounded btn'>Home</Link>
+                            <Link to={'/'} className='me-1 rounded btn' onClick={() => window.scroll({ top: 0 })}>Home</Link>
                             <Link to={'/creations'} className='me-1 rounded btn'>Creations</Link>
-                            <Link to={'/#services'} className='me-1 rounded btn' onClick={() => setTimeout(() => window.scroll(0, 1300), 200)}>Services</Link>
+                            <Link to={'/#services'} className='me-1 rounded btn' onClick={() => setTimeout(() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' }), 200)}>Services</Link>
                             <Link to={'/contact'} className='me-1 rounded btn'>Contact</Link>
                         </div>
                     }
@@ -37,8 +37,8 @@ const Nav = (props) => {
                         <span></span>
                     </a>
                 </div>
-            </nav>
-        </div>
+            </nav >
+        </div >
     )
 }
 

@@ -44,18 +44,20 @@ const StateContext = ({ children }) => {
         }
     ])
 
+    const [messages, setMessages] = useState([])
     const [creations, setCreations] = useState([])
     const [filters, setFilters] = useState([])
     const [err, setErr] = useState('')
     const [isLooking, setIsLooking] = useState(false)
     const [toPop, setToPop] = useState(0)
     const [twitch, setTwitch] = useState(Number(new Date()))
+    const [pop, setPop] = useState('')
 
     const fetchRsc = async () => {
         try {
             const res = await api.get('/creations')
             setCreations(res.data)
-            const fltRes = await api.get('/filters')
+            const fltRes = await api.get('/categories')
             setFilters(fltRes.data)
         } catch (err) {
             setErr(`ERROR: ${err.message}`)
@@ -70,11 +72,11 @@ const StateContext = ({ children }) => {
     }
 
     useEffect(() => {
+        api.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.access
         fetchRsc()
-        const interval = setInterval(() => {
+        setInterval(() => {
             setTwitch(Number(new Date()))
         }, 3000)
-        // return clearInterval(interval)
     }, [])
     useEffect(() => {
         !isLooking && func()
@@ -97,7 +99,11 @@ const StateContext = ({ children }) => {
         isLooking,
         setIsLooking,
         toPop,
-        setToPop
+        setToPop,
+        messages,
+        setMessages,
+        pop,
+        setPop
     }}>
         {children}
     </context.Provider>

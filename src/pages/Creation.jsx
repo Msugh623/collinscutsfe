@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import Nav from '../components/Nav'
 import { useStateContext } from '../state/StateContext'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { Player, ControlBar } from 'video-react';
+import 'video-react/dist/video-react.css';
 
 const Creation = () => {
   const { id } = useParams()
   const { creations, fetchRsc } = useStateContext()
-
   const theCreation = creations?.find(cr => cr?.id == id)
 
   useEffect(() => {
@@ -16,31 +17,35 @@ const Creation = () => {
   return (
     <main id="main">
       <Nav />
-      <section class="section pt-sm-5 p-3">
-        <div class="container">
-          <div class="row mb-4 align-items-center">
-            <div class="col-md-6" data-aos="fade-up">
+      <section className="section pt-sm-5 p-3">
+        <div className="container">
+          <div className="row mb-4 align-items-center">
+            <div className="col-md-6 growIn" data-aos="fade-up">
               <h2>My Creation</h2>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore.</p>
             </div>
           </div>
         </div>
-        <div class="site-section pb-0">
-          <div class="container">
-            <div class="row align-items-stretch">
-              <div class="col-md-8" data-aos="fade-up">
-                <img src="assets/img/img_1_big.jpg" alt="Image" class="img-fluid" />
+        <div className="site-section pb-0">
+          <div className="container">
+            <div className="row align-items-stretch">
+              <div className="col-md-8 slideUp" data-aos="fade-up">
+                <Player poster={theCreation?.thumbnail} preload='auto' src={theCreation?.source}>
+                  <ControlBar autoHide={false} className="my-class" />
+                </Player>
               </div>
-              <div class="col-md-4 ml-auto" data-aos="fade-up" data-aos-delay="100">
-                <div class="sticky-content">
-                  <h3 class="h3">{theCreation?.name}</h3>
-                  <p class="mb-4"><span class="text-muted">{theCreation?.category}</span></p>
+              <div className="col-md-4 ml-auto mt-3 mt-sm-0" data-aos="fade-up" data-aos-delay="100">
+                <div className="sticky-content">
+                  <h3 className="h3">{theCreation?.name}</h3>
+                  <p className="mb-4"><span className="text-muted">{theCreation?.category}</span></p>
 
-                  <div class="mb-5">
-                    <p>
+                  <div className="mb-5">
+                    <p className='slideUp'>
                       {theCreation?.description}
                     </p>
-
+                    <Link className='readmore custom-navmenu text-light growIn' to={`/contact?a=${location.pathname}`}>
+                      Attatch to message
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -5,6 +5,9 @@ import { BsViewStacked } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import ClientBar from '../components/ClientBar'
+import { PiInstagramLogo, PiTiktokLogoBold, PiXLogo } from 'react-icons/pi'
+import { FaFacebookF } from 'react-icons/fa'
+import { useStateContext } from '../state/StateContext'
 
 const Index = () => {
     const [sh, setSh] = useState(scrollY)
@@ -27,12 +30,28 @@ const Index = () => {
             <header id="header" className="header d-flex flex-column justify-content-center">
                 {
                     sh < 550 &&
-                    <nav id="navmenu" className="navmenu slideIn">
+                    <nav id="navmenu" className="navmenu ">
                         <ul>
-                            <li><Link to="/#hero" className="active"><i className="bi bi-house navicon"><BiHome className='icon' /></i><span>Home</span></Link></li>
-                            <li><Link to="/creations"><i className="bi bi-images navicon"><BiVideo className='icon' /></i><span>Creations</span></Link></li>
-                            <li><a href="#services"><i className="bi bi-hdd-stack navicon"><BsViewStacked className='icon' /></i><span>Services</span></a></li>
-                            <li><Link to="/contact"><i className="bi bi-envelope navicon"><BiEnvelope className='icon' /></i><span>Contact</span></Link></li>
+                            <li>
+                                <Delay inline={true} delay={800}>
+                                    <Link to="/#hero" className="active"><i className="bi bi-house navicon slideRight"><BiHome className='icon' /></i><span>Home</span></Link>
+                                </Delay>
+                            </li>
+                            <li>
+                                <Delay inline={true} delay={900}>
+                                    <Link to="/creations"><i className="bi bi-images navicon slideRight"><BiVideo className='icon' /></i><span>Creations</span></Link>
+                                </Delay>
+                            </li>
+                            <li>
+                                <Delay inline={true} delay={1000}>
+                                    <a href="#services"><i className="bi bi-hdd-stack navicon slideRight"><BsViewStacked className='icon' /></i><span>Services</span></a>
+                                </Delay>
+                            </li>
+                            <li>
+                                <Delay inline={true} delay={1100}>
+                                    <Link to="/contact"><i className="bi bi-envelope navicon slideRight"><BiEnvelope className='icon' /></i><span>Contact</span></Link>
+                                </Delay>
+                            </li>
                         </ul>
                     </nav>
                 }
@@ -48,12 +67,20 @@ const Index = () => {
                             <div className="row justify-content-center">
                                 <div className="col-lg-9">
                                     <h2 className='slideIn'>Chia Collins</h2>
-                                    <p>I'm <span className="typed slideUp" data-typed-items="Designer, Developer, Freelancer, Photographer">Designer</span><span className="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+                                    <p>I'm <Replacer arr={['Designer', 'Video Editor', 'Freelancer']} /></p>
                                     <div className="social-links slideUp">
-                                        <a href="#"><i className="bi bi-twitter-x"></i></a>
-                                        <a href="#"><i className="bi bi-facebook"></i></a>
-                                        <a href="#"><i className="bi bi-instagram"></i></a>
-                                        <a href="#"><i className="bi bi-linkedin"></i></a>
+                                        <Delay inline={true} delay={1500}>
+                                            <a className='slideIn' href="#"><PiXLogo /></a>
+                                        </Delay>
+                                        <Delay inline={true} delay={1600}>
+                                            <a className='slideIn' href="#"><FaFacebookF /></a>
+                                        </Delay>
+                                        <Delay inline={true} delay={1700}>
+                                            <a className='slideIn' href="#"><PiInstagramLogo className='fs-4' /></a>
+                                        </Delay>
+                                        <Delay inline={true} delay={1800}>
+                                            <a className='slideIn' href="#"><PiTiktokLogoBold /></a>
+                                        </Delay>
                                     </div>
                                 </div>
                             </div>
@@ -66,10 +93,10 @@ const Index = () => {
             <div className="mt-4">
                 <Creations limit={6} />
             </div>
-            <section className="section">
+            <section className="section py-5">
                 <div className="container ">
                     <div className="row justify-content-center text-center mb-4">
-                        <div className="col-5">
+                        <div className="col-md-5">
                             <h3 className="h3 heading">My Clients</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit explicabo inventore.</p>
                         </div>
@@ -100,7 +127,7 @@ const Index = () => {
             <section id='services' className="section services">
                 <div className="container">
                     <div className="row justify-content-center text-center mb-4">
-                        <div className="col-5">
+                        <div className="col-md-5">
                             <h3 className="h3 heading">My Services</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit explicabo inventore.</p>
                         </div>
@@ -165,3 +192,33 @@ const Index = () => {
 }
 
 export default Index
+
+
+const Delay = ({ delay, children, inline }) => {
+    const [arch, setArch] = useState(false)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setArch(true)
+        }, delay || 700);
+    }, [])
+
+    return arch ? children : <div className={inline ? 'd-inline' : ''} style={{ opacity: 0 }}>
+        {children}
+    </div>
+}
+
+const Replacer = ({ arr }) => {
+    const { toPop } = useStateContext()
+    const [i, setI] = useState(0)
+    const [show, setShow] = useState(false)
+    useEffect(() => {
+        setShow(false)
+        setI(prev => {
+            const next = prev + 1
+            return prev > arr.length - 2 ? 0 : next
+        })
+        setTimeout(() => setShow(true), 100)
+    }, [toPop])
+    return show ? <span className="typed slideUp">{arr[i]} </span> : ''
+}
