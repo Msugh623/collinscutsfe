@@ -22,7 +22,7 @@ const Nav = (props) => {
             }
             <nav className={`navbar navbar-light custom-navbar  pt-0 ${!props.hasBg && 'bg-light'} shadow-sm`}>
                 <div className="container py-3 pb-2 px-2">
-                    <h2 className='m-0'><Link to={'/'} onClick={() => window.scroll({ top: 0 })}>Collins Cuts</Link></h2>
+                    <h2 className='m-0'><Link to={'/'} onClick={() => window.scroll({ top: 0 })}>Chia Collins</Link></h2>
                     {!hasPop &&
                         <div className="ms-auto me-2 d-none d-md-block">
                             <Link to={'/'} className='me-1 rounded btn' onClick={() => window.scroll({ top: 0 })}>Home</Link>

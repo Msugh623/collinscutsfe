@@ -67,7 +67,7 @@ const Index = () => {
                             <div className="row justify-content-center">
                                 <div className="col-lg-9">
                                     <h2 className='slideIn'>Chia Collins</h2>
-                                    <p>I'm a <Replacer arr={['Designer', 'Video Editor', 'Freelancer']} /></p>
+                                    <p>I'm a <Replacer arr={[ 'Video Editor', 'Motion Graphics Designer']} /></p>
                                     <div className="social-links slideUp">
                                         <Delay inline={true} delay={1500}>
                                             <a className='slideIn' href="#"><PiXLogo /></a>
@@ -93,43 +93,12 @@ const Index = () => {
             <div className="mt-4">
                 <Creations limit={6} />
             </div>
-            <section className="section py-5">
-                <div className="container ">
-                    <div className="row justify-content-center text-center mb-4">
-                        <div className="col-md-5">
-                            <h3 className="h3 heading">My Clients</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit explicabo inventore.</p>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-4 col-sm-4 col-md-2">
-                            <a href="#" className="client-logo"><img src="assets/img/logo-adobe.png" alt="Image" className="img-fluid" /></a>
-                        </div>
-                        <div className="col-4 col-sm-4 col-md-2">
-                            <a href="#" className="client-logo"><img src="assets/img/logo-uber.png" alt="Image" className="img-fluid" /></a>
-                        </div>
-                        <div className="col-4 col-sm-4 col-md-2">
-                            <a href="#" className="client-logo"><img src="assets/img/logo-apple.png" alt="Image" className="img-fluid" /></a>
-                        </div>
-                        <div className="col-4 col-sm-4 col-md-2">
-                            <a href="#" className="client-logo"><img src="assets/img/logo-netflix.png" alt="Image" className="img-fluid" /></a>
-                        </div>
-                        <div className="col-4 col-sm-4 col-md-2">
-                            <a href="#" className="client-logo"><img src="assets/img/logo-nike.png" alt="Image" className="img-fluid" /></a>
-                        </div>
-                        <div className="col-4 col-sm-4 col-md-2">
-                            <a href="#" className="client-logo"><img src="assets/img/logo-google.png" alt="Image" className="img-fluid" /></a>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
             <section id='services' className="section services">
                 <div className="container">
                     <div className="row justify-content-center text-center mb-4">
                         <div className="col-md-5">
                             <h3 className="h3 heading">My Services</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit explicabo inventore.</p>
+                            <p>Elevate your YouTube channel: Engaging, unique, and unforgettable videos every time.</p>
                         </div>
                     </div>
                     <div className="row">

@@ -22,7 +22,7 @@ const Creation = () => {
           <div className="row mb-4 align-items-center">
             <div className="col-md-6 growIn" data-aos="fade-up">
               <h2>My Creation</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore.</p>
+              <p></p>
             </div>
           </div>
         </div>
@@ -35,7 +35,10 @@ const Creation = () => {
                 </Player>
               </div>
               <div className="col-md-4 ml-auto mt-3 mt-sm-0" data-aos="fade-up" data-aos-delay="100">
-                <div className="sticky-content">
+                <div className="sticky-content" style={window.innerWidth > 700 ? {
+                  position: 'sticky',
+                  top: '100px'
+                } : {}}>
                   <h3 className="h3">{theCreation?.name}</h3>
                   <p className="mb-4"><span className="text-muted">{theCreation?.category}</span></p>
 

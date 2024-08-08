@@ -8,17 +8,19 @@ const Creations = () => {
   const { creations, fetchRsc, filters } = useStateContext()
 
   const [prs, setPrs] = useState(creations)
-  const [filter, setFilter] = useState('All')
+  const [filter, setFilter] = useState(location.pathname.split('#')[1]||'All')
 
 
   useEffect(() => {
     filter == 'All' ?
       setPrs(creations)
-      : setPrs(creations.filter(cr => cr.category == filter))
+      : (() => {
+        setPrs([])
+        setTimeout(() => setPrs(creations.filter(cr => cr.category == filter)), 200)
+      })()
   }, [filter, creations])
 
-  useEffect(() => {
-    console.log(filters)
+  useEffect(() => { 
     fetchRsc()
   }, [])
 
@@ -30,10 +32,10 @@ const Creations = () => {
           <div className="row mb-5 align-items-center">
             <div className="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
               <h2 className='slideIn'>Hey, I'm Chia Collins</h2>
-              <p className="mb-0 growIn">Freelance Video Editor & Professional Motion Graphics Designer</p>
+              <p className="mb-0 growIn">Transforming your YouTube content with captivating storytelling and unparalleled quality.</p>
             </div>
             <div className="col-md-12 col-lg-6 text-center text-sm-start text-lg-end w-100" data-aos="fade-up" data-aos-delay="100" >
-              {filters.length ? <div id="filters" className="filters slideLeft">
+              {!filters.length ? <div id="filters" className="filters slideLeft">
                 <a href="#All" data-filter="*" className={'' + (filter == 'All' && 'active shadow rounded')} onClick={() => setFilter('All')}>All</a>
                 {
                   filters.map(flt => {
@@ -81,7 +83,7 @@ const CreationCard = ({ creation }) => {
     <Link to={`/creation/${creation.id}`} className="item-wrap rounded shadow growUp" >
       <div className=''>
         {!swap ?
-          <img className="img-fluid w-100"  src={creation?.thumbnail} />
+          <img className="img-fluid w-100" src={creation?.thumbnail} />
           : <Player key={creation?.id} poster={creation?.thumbnail} autoPlay src={creation?.source}>
             <ControlBar autoHide={false} className="my-class" />
           </Player>

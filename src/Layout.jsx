@@ -63,10 +63,10 @@ const AppLayout = () => {
                             </div>
                         </div>
                         <div className="col-sm-6 social text-md-end">
-                            <a href="#"><span className="bi bi-twitter"></span> <PiXLogo /></a>
-                            <a href="#"><span className="bi bi-facebook"></span> <FaFacebookF /></a>
-                            <a href="#"><span className="bi bi-instagram"></span><PiInstagramLogo className='fs-4' /></a>
-                            <a href="#"><span className="bi bi-linkedin"></span><PiTiktokLogoBold /></a>
+                            <a href="#"><span className="bi bi-twitter"> <PiXLogo /></span></a>
+                            <a href="#"><span className="bi bi-facebook"> <FaFacebookF /></span></a>
+                            <a href="#"><span className="bi bi-instagram"><PiInstagramLogo className='fs-4' /></span></a>
+                            <a href="#"><span className="bi bi-linkedin"><PiTiktokLogoBold /></span></a>
                         </div>
                     </div>
                 </div>

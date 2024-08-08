@@ -6,41 +6,25 @@ const context = createContext()
 const StateContext = ({ children }) => {
     const [clients, setClients] = useState([
         {
-            img: '',
-            review: 'Perspiciatis possimus cum quidem porro, adipisci neque! A rerum voluptas, sapiente dignissimos in illo harum perspiciatis magnam quae id sequi, accusantium debitis Lorem ipsum dolor sit amet consectetur adipisicing elit. . ',
-            mf: 'Azure asp',
-            rating: '4',
+            review: 'Chia is very professional. He always tried to comply with our request and only stopped when we were happy with the final product. He is Creative and has a good feeling on how to transport text to a visual story.',
+            mf:'Pruno Pererira',
+            rating: '5',
             i: 0
         }, {
-            img: '',
-            review: 'r adipisicing elit. Perspiciatis possimus Lorem ipsum dolor sit amet consectetu cum quidem porro, adipisci neque! A rerum voluptas, sapiente dignissimos in illo harum perspiciatis magnam quae id sequi, accusantium debitis. ',
-            mf: 'Azure asp',
-            rating: '4',
+            review: 'Collins was easy to work with and made us a good video, we highly recommend working with him and we will be gladly working with him again.',
+            mf: '',
+            rating: '5',
             i: 1
         }, {
-            img: '',
-            review: ' possimus cum quidem porro, adipisci neque! A rerum voluptas, sapiente Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis dignissimos in illo harum perspiciatis magnam quae id sequi, accusantium debitis. ',
-            mf: 'Azure asp',
-            rating: '4',
+            review: 'I hired Chia .C to help I my youtube channel in the editing part. He was reliable flexible and very responsive. Highly recommended!',
+            mf: 'Ashutosh Raj',
+            rating: '5',
             i: 2
         }, {
-            img: '',
-            review: 'illo harum perspiciatis magnam quae id sequi, accusantium debitis Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis possimus cum quidem porro, adipisci neque! A rerum voluptas, sapiente dignissimos in . ',
-            mf: 'Azure asp',
+            review: ' Chia is a fantastic guy to work with and a very talented video editor.',
+            mf: 'James Roberts',
             rating: '4',
             i: 3
-        }, {
-            img: '',
-            review: 'sit amet consectetur adipisicing elit.Lorem ipsum dolor  Perspiciatis possimus cum quidem porro, adipisci neque! A rerum voluptas, sapiente dignissimos in illo harum perspiciatis magnam quae id sequi, accusantium debitis. ',
-            mf: 'Azure asp',
-            rating: '4',
-            i: 4
-        }, {
-            img: '',
-            review: ' in illo harum perspiciatis sit amet consectetur adipisicing elit.Lorem ipsum dolor  Perspiciatis possimus cum quidem porro, adipisci neque! A rerum voluptas, sapiente dignissimos magnam quae id sequi, accusantium debitis. ',
-            mf: 'Azure asp',
-            rating: '4',
-            i: 5
         }
     ])
 
