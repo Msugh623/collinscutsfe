@@ -32,7 +32,7 @@ const Contact = () => {
     e.preventDefault()
     try {
       setIsSending(true)
-      const res = await api.post('/messages', {
+      const res = await api.post('/rq/messages', {
         ...newData
       })
       setIsSending('sent')

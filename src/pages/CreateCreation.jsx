@@ -38,7 +38,7 @@ const CreateCreation = () => {
       for (let i = 0; i < keys.length; i++) {
         fd.append(keys[i], newData[keys[i]])
       }
-      const res = await api.post('/creations', fd)
+      const res = await api.post('/rq/creations', fd)
       setErr(<div><span className="text-success icon"><FaCheckCircle /></span> {res?.message || 'Created'}</div>)
       navigate('/admin', { replace: true })
     } catch (err) {

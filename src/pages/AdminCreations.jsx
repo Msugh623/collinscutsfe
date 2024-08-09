@@ -47,7 +47,7 @@ const AdminCreations = () => {
                                                 && (async () => {
                                                     const tst = toast('Processing...', { autoClose: false })
                                                     try {
-                                                        const _ = await api.delete('/categories/' + flt?.id)
+                                                        const _ = await api.delete('/rq/categories/' + flt?.id)
                                                         fetchRsc()
                                                     } catch (err) {
                                                         toast.error('ERROR: ' + err.message)
@@ -67,7 +67,7 @@ const AdminCreations = () => {
                                                 if (!catName) {
                                                     throw new Error('New categories must have a name')
                                                 }
-                                                const _ = await api.post('/categories', {
+                                                const _ = await api.post('/rq/categories', {
                                                     name: catName,
                                                     id: 'ctgr' + Date.now()
                                                 })

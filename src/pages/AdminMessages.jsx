@@ -11,7 +11,7 @@ const AdminMessages = () => {
     const { messages, setErr, setMessages, setPop, pop } = useStateContext()
     const getMessages = async () => {
         try {
-            const res = await api.get('/messages')
+            const res = await api.get('/rq/messages')
             setMessages(res.data)
         } catch (err) {
             setErr('X ERROR: ' + err.message)
@@ -84,7 +84,7 @@ const Message = ({ message }) => {
                         && (async () => {
                             const tst = toast('deleting...', { autoClose: false })
                             try {
-                                const _ = await api.delete('/messages/' + message?.id)
+                                const _ = await api.delete('/rq/messages/' + message?.id)
                                 navigate(-1, { replace: true })
                                 setPop('')
                             } catch (err) {

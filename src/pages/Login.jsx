@@ -21,7 +21,7 @@ const Login = () => {
             autoClose: false
         })
         try {
-            const cred = (await api.post('/login', data))?.data
+            const cred = (await api.post('/rq/login', data))?.data
             localStorage.access = cred.token
             api.defaults.headers.common['Authorization'] = 'Bearer ' + cred.token
             location.replace('/admin')

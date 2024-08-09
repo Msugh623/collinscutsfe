@@ -39,9 +39,9 @@ const StateContext = ({ children }) => {
 
     const fetchRsc = async () => {
         try {
-            const res = await api.get('/creations')
+            const res = await api.get('/rq/creations')
             setCreations(res.data)
-            const fltRes = await api.get('/categories')
+            const fltRes = await api.get('/rq/categories')
             setFilters(fltRes.data)
         } catch (err) {
             setErr(`ERROR: ${err.message}`)

@@ -26,7 +26,7 @@ const AdminCreation = () => {
     const handleSubmit = async () => {
         const tst = toast('updating...', { autoClose: false })
         try {
-            const _ = await api.put('/creations/' + id, {
+            const _ = await api.put('/rq/creations/' + id, {
                 ...editData
             })
             fetchRsc()
@@ -117,7 +117,7 @@ const AdminCreation = () => {
                                                 && (async () => {
                                                     const tst = toast('updating...', { autoClose: false })
                                                     try {
-                                                        const _ = await api.delete('/creations/' + id)
+                                                        const _ = await api.delete('/rq/creations/' + id)
                                                         navigate(-1, { replace: true })
                                                         fetchRsc()
                                                     } catch (err) {
