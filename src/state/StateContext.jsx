@@ -12,7 +12,7 @@ const StateContext = ({ children }) => {
             i: 0
         }, {
             review: 'Collins was easy to work with and made us a good video, we highly recommend working with him and we will be gladly working with him again.',
-            mf: '',
+            mf: 'Miguel Santos',
             rating: '5',
             i: 1
         }, {
@@ -23,8 +23,18 @@ const StateContext = ({ children }) => {
         }, {
             review: ' Chia is a fantastic guy to work with and a very talented video editor.',
             mf: 'James Roberts',
-            rating: '4',
+            rating: '5',
             i: 3
+        }, {
+            review: 'Chia Collins excelled in editing our documentary. The final product was polished and engaging, with great attention to detail. Excellent communication and responsiveness. Highly recommend!',
+            i: 4,
+            mf: 'Alex Taylor',
+            rating: '5'
+        }, {
+            rating: '5',
+            review: 'Chia Collins worked wonders on our YouTube video! The editing was sharp and vibrant, elevating the content to a whole new level. Chia’s creativity and efficiency made the project a breeze. If you’re looking for top-notch video editing, Chia is the go-to pro!',
+            i: 5,
+            mf: 'Marco Rossi'
         }
     ])
 

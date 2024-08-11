@@ -83,11 +83,11 @@ const Index = () => {
                                             <a className='slideIn' href="#"><PiTiktokLogoBold /></a>
                                         </Delay>
                                     </div>
-                                    <Delay inline={true} delay={3000}>
+                                    {/* <Delay inline={true} delay={3000}>
                                         <div className="slideUp p-0 mt-3">
                                             <StarredBar />
                                         </div>
-                                    </Delay>
+                                    </Delay> */}
                                 </div>
 
                             </div>

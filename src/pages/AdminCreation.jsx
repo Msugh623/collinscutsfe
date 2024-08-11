@@ -23,12 +23,11 @@ const AdminCreation = () => {
         star: false
     })
 
-    const handleSubmit = async (name, value) => {
+    const handleSubmit = async () => {
         const tst = toast('updating...', { autoClose: false })
         try {
             const _ = await api.put('/rq/creations/' + id, {
                 ...editData,
-                [name]: value
             })
             fetchRsc()
             setIsEdit('')
@@ -56,6 +55,12 @@ const AdminCreation = () => {
             name: theCreation?.name || ''
         })
     }, [theCreation])
+
+    useEffect(() => {
+        setTimeout(() => {
+            handleSubmit()
+        }, 500);
+    }, [editData.star])
 
     return (
         <main id="main">
@@ -106,7 +111,6 @@ const AdminCreation = () => {
                                         </p>
                                         <Link className={`text-dark bg-none text-light growIn me-3 `} onClick={() => {
                                             setEditData(prev => {
-                                                handleSubmit('star', !prev.star)
                                                 return {
                                                     ...prev,
                                                     star: !prev.star
