@@ -2122,11 +2122,38 @@ path {
     }
 }
 
+#marquee::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+#marquee::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 8px 8px 3px 3px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+#marquee::-webkit-scrollbar-thumb:hover {
+    background-color: #bfcfd5;
+}
+
+#marquee::-webkit-scrollbar-thumb:active {
+    background-color: #a8bbbf;
+}
+
+#marquee::-webkit-scrollbar {
+    height: 8px; 
+}
+
+#marquee:hover::-webkit-scrollbar {
+    height: 12px; 
+}
+
 
 #marquee,
 #crmarquee {
     width: 100%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 #marquee .leftPanel,

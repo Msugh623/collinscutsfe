@@ -28,8 +28,8 @@ const ClientBar = () => {
                 </div>
             </div>
             <div className="container" onMouseEnter={() => setIsLooking(true)} onMouseLeave={() => setIsLooking(false)}>
-                <div className="testimonials-slider swiper panContainer" data-aos="fade-up" data-aos-delay="100">
-                    <div id='marquee' className={`swiper-wrapper d-flex ${isMoving}`}>
+                <div className="testimonials-slider swiper panContainer mb-0" data-aos="fade-up" data-aos-delay="100">
+                    <div id='marquee' className={`swiper-wrapper mb-0 d-flex ${isMoving}`}>
                         {
                             clients.map((cl, i) => {
                                 return <p key={i} className={`col-sm-4 px-3 ani`} style={{
