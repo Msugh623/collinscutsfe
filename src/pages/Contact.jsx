@@ -3,7 +3,7 @@ import { BiEnvelope, BiLink } from 'react-icons/bi'
 import { BsFillTelephoneFill, BsWhatsapp } from 'react-icons/bs'
 import Nav from '../components/Nav'
 import { useStateContext } from '../state/StateContext'
-import { FaCheckCircle, FaPaperPlane, FaTimesCircle } from 'react-icons/fa'
+import { FaCheckCircle, FaPaperPlane, FaTimesCircle, FaWhatsapp } from 'react-icons/fa'
 import api from '../../axios/api'
 import { useSearchParams } from 'react-router-dom'
 
@@ -54,28 +54,27 @@ const Contact = () => {
       {/* <!-- Section Title --> */}
       <div className="container section-title mt-4 growIn" data-aos="fade-up">
         <h2>Contact</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>Ready to bring your vision to life? Whether you have a project in mind or just want to discuss ideas, I'm here to help. Drop me a message, and let's create something amazing together!</p>
       </div>
       <div className="container slideUp" data-aos="fade" data-aos-delay="100">
 
         <div className="row gy-4">
 
           <div className="col-lg-4">
-            <a className="info-item d-flex" data-aos="fade-up" href="mailto:mail@gmail.com" data-aos-delay="400">
+            <a className="info-item d-flex" data-aos="fade-up" href="mailto:payacc092@gmail.com" data-aos-delay="400">
               <i className="bi bi-envelope flex-shrink-0"><BiEnvelope /></i>
               <div>
                 <h3>Email</h3>
-                <p>mail@gmail.com</p>
+                <p>payacc092@gmail.com</p>
               </div>
             </a>
-
-            <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="300" onClick={() => { setErr('copied +234 705 217 2789'); navigator.clipboard.write('+234 705 217 2789') }}>
-              <i className="bi bi-telephone flex-shrink-0"><BsWhatsapp /></i>
+            <a className="info-item d-flex" data-aos="fade-up" href="https://wa.me/2347052172789" data-aos-delay="400">
+              <i className="bi bi-envelope flex-shrink-0"><FaWhatsapp className='fs-5' /></i>
               <div>
                 <h3>Whatsapp</h3>
                 <p>+234 705 217 2789</p>
               </div>
-            </div>
+            </a>
             <div className="info-item d-flex" data-aos="fade-up" data-aos-delay="300" onClick={() => { setErr('copied +234 706 064 4682'); navigator.clipboard.write('+234 706 064 4682') }}>
               <i className="bi bi-telephone flex-shrink-0"><BsFillTelephoneFill /></i>
               <div>
