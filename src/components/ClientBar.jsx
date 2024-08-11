@@ -14,7 +14,7 @@ const ClientBar = () => {
             <div className="row justify-content-center text-center mb-4">
                 <div className="col-md-5">
                     <h3 className="h3 heading">What My Clients Say</h3>
-                    <div>Your review will come as you get mesmorized by the finished product delivered, it might even find a space here.</div>
+                    <div>My Clients are mesmorized as the see their project come true in ways they never imagined possible</div>
                 </div>
             </div>
             <div className="container" onMouseEnter={() => setIsLooking(true)} onMouseLeave={() => setIsLooking(false)}>

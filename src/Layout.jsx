@@ -9,7 +9,7 @@ import Creation from './pages/Creation'
 import Contact from './pages/Contact'
 import Admin from './pages/Admin'
 import { PiInstagramLogo, PiTiktokLogoBold, PiXLogo } from 'react-icons/pi'
-import { FaFacebookF } from 'react-icons/fa'
+import { FaWhatsapp } from 'react-icons/fa'
 import Login from './pages/Login'
 import AdminIndex from './pages/AdminIndex'
 import AdminCreation from './pages/AdminCreation'
@@ -40,7 +40,7 @@ const AppLayout = () => {
                         <Route path='/admin/creation/:id' element={<AdminCreation />} />
                         <Route path='/admin/creation/add' element={<CreateCreation />} />
                     </Route>
-                    <Route path='*' element={[{message:'ERROR: Path not Found'}]} />
+                    <Route path='*' element={[{ message: 'ERROR: Path not Found' }]} />
                 </Routes>
                 {err && <div className="custom-navmenu text-center text-light fixed-bottom ">
                     <div className='growIn slideUp'>
@@ -64,10 +64,10 @@ const AppLayout = () => {
                             </div>
                         </div>
                         <div className="col-sm-6 social text-md-end">
-                            <a href="#"><span className="bi bi-twitter"> <PiXLogo /></span></a>
-                            <a href="#"><span className="bi bi-facebook"> <FaFacebookF /></span></a>
-                            <a href="#"><span className="bi bi-instagram"><PiInstagramLogo className='fs-4' /></span></a>
-                            <a href="#"><span className="bi bi-linkedin"><PiTiktokLogoBold /></span></a>
+                            <a target='_blank' href="https://x.com/ChiaCollin34870?t=L4TBnTrV0yJPHvw8ciPYDQ&s=09"><span className="bi bi-twitter"> <PiXLogo className='icon fs-4' /></span></a>
+                            <a target='_blank' href="https://wa.me/2347052172789"><span className="bi bi-facebook"> < FaWhatsapp className='icon fs-4' /></span></a>
+                            <a target='_blank' href="https://www.instagram.com/collins_cutss?igsh=bXBlb3BpcnNlbWZ6"><span className="bi bi-instagram"><PiInstagramLogo className='fs-4 icon' /></span></a>
+                            <a target='_blank' href="https://www.tiktok.com/@collinscuts?_t=8omOEFxDeUw&_r=1"><span className="bi bi-linkedin"><PiTiktokLogoBold className='icon fs-4' /></span></a>
                         </div>
                     </div>
                 </div>
