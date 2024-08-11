@@ -4,10 +4,20 @@ import { BiSolidStar } from 'react-icons/bi'
 
 const ClientBar = () => {
     const {
+        isLooking,
         setIsLooking,
         clients,
         toPop,
     } = useStateContext()
+    const [isMoving, setIsMoving] = useState(false)
+
+    useEffect(() => {
+        !isLooking && toPop == 0 ? setIsMoving('panRev') : setIsMoving('pan')
+        setTimeout(() => {
+            setIsMoving(false)
+        }, 600);
+    }, [toPop])
+
 
     return (
         <section className="section pt-0">
@@ -18,8 +28,8 @@ const ClientBar = () => {
                 </div>
             </div>
             <div className="container" onMouseEnter={() => setIsLooking(true)} onMouseLeave={() => setIsLooking(false)}>
-                <div className="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-                    <div id='marquee' className="swiper-wrapper  d-flex">
+                <div className="testimonials-slider swiper panContainer" data-aos="fade-up" data-aos-delay="100">
+                    <div id='marquee' className={`swiper-wrapper d-flex ${isMoving}`}>
                         {
                             clients.map((cl, i) => {
                                 return <p key={i} className={`col-sm-4 px-3 ani`} style={{
@@ -69,14 +79,14 @@ const ReviewCard = ({ review, glow, i }) => {
     return <div className="swiper-slide mb-5 p-sm-2" id={glow ? 'current' : ''}>
         <div className={`testimonial-wrap p-3 shadow rounded  ${glow ? 'downCard' : 'shadow-lev slidecard'}`}>
             <div className="testimonial">
-                <p className='' style={{minHeight:'20px'}}>{review.mf && <>~</>} {review.mf} {review.mf && <>~</>} </p>
+                <p className='' style={{ minHeight: '20px' }}>{review.mf && <>~</>} {review.mf} {review.mf && <>~</>} </p>
                 <p className='growIn'>
                     {text}
                 </p>
                 {rtArr.map(_ => (
                     <BiSolidStar className='icon text-warning' style={{
-                        textShadow:'2px 2px 2px'
-                    }}/>
+                        textShadow: '2px 2px 2px'
+                    }} />
                 ))} <span className="small">({review.rating})</span>
             </div>
         </div>

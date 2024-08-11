@@ -112,38 +112,45 @@ const Index = () => {
                     </div>
                     <div className="row">
                         <div className="col-12 col-sm-6 col-md-6 col-lg-3">
-                            <i className="bi bi-calendar4-week"><FaGem /></i>
-                            <h4 className="h4 mb-2">Premium Quality Visuals</h4>
-                            <p> I inject high-energy, captivating edits into your content that will keep your audience glued to the screen. Your vision, combined with my editing skills, equals viral potential.</p>
-                            {/* <ul className="list-unstyled list-line">
+                            <div className="hovShade">
+                                <i className="bi bi-calendar4-week"><FaGem /></i>
+                                <h4 className="h4 mb-2">Premium Quality Visuals</h4>
+                                <p> I inject high-energy, captivating edits into your content that will keep your audience glued to the screen. Your vision, combined with my editing skills, equals viral potential.</p>
+                                {/* <ul className="list-unstyled list-line">
                                 <li>Crisp, clear visuals </li>
                                 <li>Expertly crafted graphics</li>
                                 <li>Cohesive visual elements </li>
                             </ul> */}
+                            </div>
                         </div>
                         <div className="col-12 col-sm-6 col-md-6 col-lg-3">
-                            <i className="bi bi-binoculars"><BiStopwatch /></i>
-                            <h4 className="h4 mb-2">Time-Saving</h4>
-                            <p>delivering high-quality videos in record time. You'll have more time to focus on what you love, creating amazing content and growing your audience.</p>
-                            {/* <ul className="list-unstyled list-line">
+                            <div className="hovShade">
+                                <i className="bi bi-binoculars"><BiStopwatch /></i>
+                                <h4 className="h4 mb-2">Time-Saving</h4>
+                                <p>delivering high-quality videos in record time. You'll have more time to focus on what you love, creating amazing content and growing your audience.</p>
+                                {/* <ul className="list-unstyled list-line">
                                 <li>Streamlined processes</li>
                                 <li>Near immediate product availability</li>
                                 <li>Easy access to and management</li>
                             </ul> */}
+                            </div>
                         </div>
                         <div className="col-12 col-sm-6 col-md-6 col-lg-3">
-                            <i className="bi bi-brightness-high"><BsMotherboard /></i>
-                            <h4 className="h4 mb-2">Management</h4>
-                            <p>Enjoy complete peace of mind as i manage every aspect of the process. You have full control over your level of involvement.</p>
-                            {/* <ul className="list-unstyled list-line">
+                            <div className="hovShade">
+                                <i className="bi bi-brightness-high"><BsMotherboard /></i>
+                                <h4 className="h4 mb-2">Management</h4>
+                                <p>Enjoy complete peace of mind as i manage every aspect of the process. You have full control over your level of involvement.</p>
+                                {/* <ul className="list-unstyled list-line">
                                 <li>Customized features to fit your needs</li>
                                 <li>Quickly bring your ideas and opinions into the project</li>
                                 <li>Magnam soluta quod</li>
                                 <li>Lorem ipsum dolor</li>
                                 <li>Cumque quae aliquam</li>
                             </ul> */}
+                            </div>
                         </div>
                         <div className="col-12 col-sm-6 col-md-6 col-lg-3">
+                            <div className="hovShade">
                             <i className="bi bi-calendar4-week"><MdChangeCircle /></i>
                             <h4 className="h4 mb-2">Uniqueness</h4>
                             <p>Each video we put out there will be will be authentic and unique and you will completely stand out from all your competetion.</p>
@@ -154,6 +161,7 @@ const Index = () => {
                                 <li>Lorem ipsum dolor</li>
                                 <li>Cumque quae aliquam</li>
                             </ul> */}
+                          </div>
                         </div>
                     </div>
                 </div>
