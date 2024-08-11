@@ -30,7 +30,7 @@ const Creation = () => {
           <div className="container">
             <div className="row align-items-stretch">
               <div className="col-md-8 slideUp" data-aos="fade-up">
-                <Player poster={theCreation?.thumbnail} preload='auto' src={theCreation?.source}>
+                <Player poster={theCreation?.thumbnail} preload='auto' aspectRatio='16:9' src={theCreation?.source}>
                   <ControlBar autoHide={false} className="my-class" />
                 </Player>
               </div>

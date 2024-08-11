@@ -3,14 +3,13 @@ import { useStateContext } from '../state/StateContext'
 import Nav from '../components/Nav'
 import { Link } from 'react-router-dom'
 import { ControlBar, Player } from 'video-react'
-import { PiChartLineUp } from 'react-icons/pi'
 import { BiFilm } from 'react-icons/bi'
 
 const Creations = () => {
   const { creations, fetchRsc, filters } = useStateContext()
 
   const [prs, setPrs] = useState(creations)
-  const [filter, setFilter] = useState(location.pathname.split('#')[1] || 'All')
+  const [filter, setFilter] = useState(location.href.split('#')[1] || 'All')
 
 
   useEffect(() => {
@@ -18,9 +17,16 @@ const Creations = () => {
       setPrs(creations)
       : (() => {
         setPrs([])
-        setTimeout(() => setPrs(creations.filter(cr => cr.category == filter)), 200)
+        setTimeout(() => setPrs(creations.filter(cr => cr.category == filter)), 5)
       })()
-  }, [filter, creations])
+  }, [filter, creations, location.href])
+
+  useEffect(() => {
+    setFilter(location.href.split('#')[1] || 'All');
+    (location.href.split('#')[1] || 'All') == 'All' ?
+      setPrs(creations)
+      : setPrs(creations.filter(cr => cr.category == filter))
+  }, [location.href])
 
   useEffect(() => {
     fetchRsc()
@@ -38,7 +44,7 @@ const Creations = () => {
                 <div className="col-sm-6 d-flex">
                   <div className="ms-sm-auto">
                     <div className="rounded shadow-sm slideUp p-2 pt-0 ">
-                      <Link to={'/contact'} className='text-dark fs-6'>Captivate your audience! <BiFilm className='fs-5 border icon ms-1' style={{rotate:'25deg'}} /></Link>
+                      <Link to={'/contact'} className='text-dark fs-6'>Captivate your audience! <BiFilm className='fs-5 border icon ms-1' style={{ rotate: '25deg' }} /></Link>
                     </div>
                   </div>
                 </div>
@@ -95,7 +101,7 @@ const CreationCard = ({ creation }) => {
       <div className=''>
         {!swap ?
           <img className="img-fluid w-100" src={creation?.thumbnail} />
-          : <Player key={creation?.id} poster={creation?.thumbnail} autoPlay src={creation?.source}>
+          : <Player key={creation?.id} poster={creation?.thumbnail} aspectRatio='16:9' autoPlay src={creation?.source}>
             <ControlBar autoHide={false} className="my-class" />
           </Player>
         }
