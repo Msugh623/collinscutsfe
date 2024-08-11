@@ -7,7 +7,7 @@ const StateContext = ({ children }) => {
     const [clients, setClients] = useState([
         {
             review: 'Chia is very professional. He always tried to comply with our request and only stopped when we were happy with the final product. He is Creative and has a good feeling on how to transport text to a visual story.',
-            mf:'Pruno Pererira',
+            mf: 'Pruno Pererira',
             rating: '5',
             i: 0
         }, {
@@ -34,21 +34,27 @@ const StateContext = ({ children }) => {
     const [err, setErr] = useState('')
     const [isLooking, setIsLooking] = useState(false)
     const [toPop, setToPop] = useState(0)
+    const [toPopst, setToPopst] = useState(0)
     const [twitch, setTwitch] = useState(Number(new Date()))
     const [pop, setPop] = useState('')
 
     const fetchRsc = async () => {
         try {
             const res = await api.get('/rq/creations')
-            setCreations(res.data)
+            setCreations(typeof res.data == 'string' ? [] : res.data)
             const fltRes = await api.get('/rq/categories')
-            setFilters(fltRes.data)
+            setFilters(typeof fltRes.data == 'string' ? [] : fltRes.data)
         } catch (err) {
             setErr(`ERROR: ${err.message}`)
         }
     }
     const func = () => {
         setToPop(prev => {
+            const a = prev + 1
+            const b = prev >= clients.length - 1 ? 0 : a;
+            return b
+        })
+        setToPopst(prev => {
             const a = prev + 1
             const b = prev >= clients.length - 1 ? 0 : a;
             return b
@@ -62,9 +68,11 @@ const StateContext = ({ children }) => {
             setTwitch(Number(new Date()))
         }, 3000)
     }, [])
+
     useEffect(() => {
         !isLooking && func()
     }, [twitch])
+
     useEffect(() => {
         err && setTimeout(() => {
             setErr('')
@@ -87,7 +95,8 @@ const StateContext = ({ children }) => {
         messages,
         setMessages,
         pop,
-        setPop
+        setPop,
+        toPopst
     }}>
         {children}
     </context.Provider>

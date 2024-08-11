@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'
+import { FaCheckCircle, FaSpinner, FaTimesCircle } from 'react-icons/fa'
 import { useStateContext } from '../state/StateContext'
 import Nav from '../components/Nav'
 import { toast } from 'react-toastify'
@@ -30,7 +30,8 @@ const CreateCreation = () => {
   async function handleSubmit(e) {
     e.preventDefault()
     const tst = toast('Uploading Creation..., Do not Navigate from this page or turn off your screen.', {
-      autoClose: false
+      autoClose: false,
+      icon: <FaSpinner className='spinner icon' />
     })
     try {
       const fd = new FormData()

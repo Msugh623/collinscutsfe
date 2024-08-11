@@ -339,11 +339,11 @@ h6 {
     }
 
     100% {
-        transform: rotate(360deg); 
+        transform: rotate(360deg);
     }
 }
 
-.spinner { 
+.spinner {
     animation: animate-preloader 1.5s linear infinite;
 }
 
@@ -475,7 +475,7 @@ h6 {
     0% {
         opacity: .7;
         position: relative;
-        bottom: -50px; 
+        bottom: -50px;
     }
 
     100% {
@@ -2118,22 +2118,25 @@ path {
 }
 
 
-#marquee {
+#marquee,
+#crmarquee {
     width: 100%;
     overflow: hidden;
 }
 
-#marquee .leftPanel {
+#marquee .leftPanel,
+#crmarquee .leftPanel {
     position: absolute;
     left: 0px;
-    background: linear-gradient(90deg, #ffffff 20%, #efefef00 80%);
+    background: linear-gradient(90deg, #000000 20%, #00000000 80%);
     padding: 200px 100px;
 }
 
-#marquee .rightPanel {
+#marquee .rightPanel,
+#crmarquee .rightPanel {
     position: absolute;
     right: 0px;
-    background: linear-gradient(90deg, #efefef00 20%, #ffffff 80%);
+    background: linear-gradient(90deg, #00000000 20%, #000000 80%);
     padding: 200px 100px;
 }
 
@@ -2161,4 +2164,8 @@ path {
 
 .dl-4 {
     animation: dl 1400ms linear !important;
+}
+
+.inShadePro{
+    /* box-shadow: inset 0px 0px 30px 10px #000; */
 }

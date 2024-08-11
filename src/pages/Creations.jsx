@@ -17,7 +17,7 @@ const Creations = () => {
       : (() => {
         setPrs([])
         setTimeout(() => setPrs(creations.filter(cr => cr.category == filter)), 200)
-      })()
+      })() 
   }, [filter, creations])
 
   useEffect(() => { 
@@ -35,7 +35,7 @@ const Creations = () => {
               <p className="mb-0 growIn">Transforming your YouTube content with captivating storytelling and unparalleled quality.</p>
             </div>
             <div className="col-md-12 col-lg-6 text-center text-sm-start text-lg-end w-100" data-aos="fade-up" data-aos-delay="100" >
-              {!filters.length ? <div id="filters" className="filters slideLeft">
+              {filters.length ? <div id="filters" className="filters slideLeft">
                 <a href="#All" data-filter="*" className={'' + (filter == 'All' && 'active shadow rounded')} onClick={() => setFilter('All')}>All</a>
                 {
                   filters.map(flt => {

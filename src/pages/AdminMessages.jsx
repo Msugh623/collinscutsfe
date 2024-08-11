@@ -10,7 +10,7 @@ import { BiChalkboard, BiLink, BiX } from 'react-icons/bi'
 const AdminMessages = () => {
     const { messages, setErr, setMessages, setPop, pop } = useStateContext()
     const getMessages = async () => {
-        try {
+        try { 
             const res = await api.get('/rq/messages')
             setMessages(res.data)
         } catch (err) {
@@ -19,8 +19,10 @@ const AdminMessages = () => {
     }
 
     useEffect(() => {
+       setTimeout(() => {
         getMessages()
-    }, [pop])
+       }, 100);
+    }, [])
     return (
         <main id="main" className='mb-5'>
             {<Nav />}

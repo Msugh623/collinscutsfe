@@ -8,6 +8,7 @@ import ClientBar from '../components/ClientBar'
 import { PiInstagramLogo, PiTiktokLogoBold, PiXLogo } from 'react-icons/pi'
 import { FaFacebookF } from 'react-icons/fa'
 import { useStateContext } from '../state/StateContext'
+import StarredBar from '../components/StarredBar'
 
 const Index = () => {
     const [sh, setSh] = useState(scrollY)
@@ -62,12 +63,12 @@ const Index = () => {
 
                     <img src="/media/hero.jpg" alt="" />
 
-                    <div className="container" data-aos="zoom-out">
+                    <div className="container " data-aos="zoom-out">
                         <div className='ms-sm-5 ps-sm-5 ps-lg-0 ms-lg-0'>
                             <div className="row justify-content-center">
                                 <div className="col-lg-9">
                                     <h2 className='slideIn'>Chia Collins</h2>
-                                    <p>I'm a <Replacer arr={[ 'Video Editor', 'Motion Graphics Designer']} /></p>
+                                    <p>I'm a <Replacer arr={['Video Editor', 'Motion Graphics Designer']} /></p>
                                     <div className="social-links slideUp">
                                         <Delay inline={true} delay={1500}>
                                             <a className='slideIn' href="#"><PiXLogo /></a>
@@ -82,7 +83,13 @@ const Index = () => {
                                             <a className='slideIn' href="#"><PiTiktokLogoBold /></a>
                                         </Delay>
                                     </div>
+                                    <Delay inline={true} delay={3000}>
+                                        <div className="slideUp p-0 mt-3">
+                                            <StarredBar />
+                                        </div>
+                                    </Delay>
                                 </div>
+
                             </div>
                         </div>
                     </div>

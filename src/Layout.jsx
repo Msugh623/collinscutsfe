@@ -40,6 +40,7 @@ const AppLayout = () => {
                         <Route path='/admin/creation/:id' element={<AdminCreation />} />
                         <Route path='/admin/creation/add' element={<CreateCreation />} />
                     </Route>
+                    <Route path='*' element={[{message:'ERROR: Path not Found'}]} />
                 </Routes>
                 {err && <div className="custom-navmenu text-center text-light fixed-bottom ">
                     <div className='growIn slideUp'>

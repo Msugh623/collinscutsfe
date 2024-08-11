@@ -52,7 +52,7 @@ const ReviewCard = ({ review, glow, i }) => {
         const mk = document.getElementById('marquee')
         if (glow) {
             const val = window.innerWidth / 6
-            mk.scroll({ left: (toPop * 320) - (val < 90 ? 12 : val), behavior: 'smooth' })
+            mk.scroll({ left: (toPop * 320) - (val < 90 ? 0 : val), behavior: 'smooth' })
         }
     }, [toPop])
 

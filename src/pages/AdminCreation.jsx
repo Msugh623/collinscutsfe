@@ -23,11 +23,12 @@ const AdminCreation = () => {
         star: false
     })
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (name, value) => {
         const tst = toast('updating...', { autoClose: false })
         try {
             const _ = await api.put('/rq/creations/' + id, {
-                ...editData
+                ...editData,
+                [name]: value
             })
             fetchRsc()
             setIsEdit('')
@@ -104,11 +105,13 @@ const AdminCreation = () => {
                                                 : <div className='d-flex'> {theCreation?.description} <button className="btn shadow-sm ms-auto" onClick={() => setIsEdit(prev => prev == 'description' ? '' : 'description')}><BiPencil /></button></div>}
                                         </p>
                                         <Link className={`text-dark bg-none text-light growIn me-3 `} onClick={() => {
-                                            setEditData(prev => ({
-                                                ...prev,
-                                                star: !prev.star
-                                            }))
-                                            handleSubmit()
+                                            setEditData(prev => {
+                                                handleSubmit('star', !prev.star)
+                                                return {
+                                                    ...prev,
+                                                    star: !prev.star
+                                                }
+                                            })
                                         }}>
                                             {editData?.star ? <BsStarFill className='fs-3 text-warning' /> : <BiStar className='fs-3' />}
                                         </Link>
@@ -136,7 +139,7 @@ const AdminCreation = () => {
                     </div>
                 </div>
             </section>
-        </main>
+        </main >
 
     )
 }

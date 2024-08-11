@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'https://collinscuts.onrender.com',
+    baseURL: location.origin,
 })
 
 export default api
