@@ -38,7 +38,7 @@ const AdminCreations = () => {
                             </div>
                         </div>
                         <div className="text-start text-lg-end mt-3" data-aos="fade-up" data-aos-delay="100">
-                            {filters.length ? <div id="filters" className="ms-auto filters slideLeft">
+                            {true ? <div id="filters" className="ms-auto filters slideLeft">
                                 <a href="#All" data-filter="*" className={'' + (filter == 'All' && 'active shadow rounded')} onClick={() => setFilter('All')}>All </a>
                                 {
                                     filters.map(flt => {

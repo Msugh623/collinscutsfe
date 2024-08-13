@@ -10,7 +10,7 @@ import { BiChalkboard, BiLink, BiX } from 'react-icons/bi'
 const AdminMessages = () => {
     const { messages, setErr, setMessages, setPop, pop } = useStateContext()
     const getMessages = async () => {
-        try { 
+        try {
             const res = await api.get('/rq/messages')
             setMessages(res.data)
         } catch (err) {
@@ -19,10 +19,11 @@ const AdminMessages = () => {
     }
 
     useEffect(() => {
-       setTimeout(() => {
-        getMessages()
-       }, 100);
+        setTimeout(() => {
+            getMessages()
+        }, 100);
     }, [])
+
     return (
         <main id="main" className='mb-5'>
             {<Nav />}
@@ -72,8 +73,27 @@ const AdminMessages = () => {
 export default AdminMessages
 
 const Message = ({ message }) => {
-    const { setPop } = useStateContext()
+    const { setPop, setMessages } = useStateContext()
     const navigate = useNavigate()
+
+    const read = async () => {
+        try {
+            const _ = await api.put('/rq/messages/' + message.id, {
+                ...message,
+                isRead: true
+            })
+            const res = await api.get('/rq/messages')
+            setMessages(res.data)
+        } catch (err) {
+            setErr('X ERROR: ' + err.message)
+        }
+    }
+
+    useEffect(() => {
+        setTimeout(() => {
+            read()
+        }, 100);
+    }, [])
 
     return <div className="col-12 col-sm-11 col-md-8 col-lg-6 mb-4 mx-auto mt-3 mt-sm-5">
         <div className="item-wrap rounded shadow growUp bg-light m-3 text-dark">
