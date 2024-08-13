@@ -47,6 +47,7 @@ const StateContext = ({ children }) => {
     const [toPopst, setToPopst] = useState(0)
     const [twitch, setTwitch] = useState(Number(new Date()))
     const [pop, setPop] = useState('')
+    const [didShow, setDidShow] = useState(false)
 
     const fetchRsc = async () => {
         try {
@@ -106,7 +107,9 @@ const StateContext = ({ children }) => {
         setMessages,
         pop,
         setPop,
-        toPopst
+        toPopst,
+        didShow,
+        setDidShow
     }}>
         {children}
     </context.Provider>

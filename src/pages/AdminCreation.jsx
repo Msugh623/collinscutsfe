@@ -54,14 +54,8 @@ const AdminCreation = () => {
             description: theCreation?.description || '',
             name: theCreation?.name || ''
         })
-    }, [theCreation])
-
-    useEffect(() => {
-        setTimeout(() => {
-            handleSubmit()
-        }, 500);
-    }, [editData.star])
-
+    }, [theCreation]) 
+    
     return (
         <main id="main">
             <Nav />

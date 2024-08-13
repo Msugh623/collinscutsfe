@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import ClientBar from '../components/ClientBar'
 import { PiInstagramLogo, PiTiktokLogoBold, PiXLogo } from 'react-icons/pi'
-import { FaGem, FaWhatsapp } from 'react-icons/fa'
-import { useStateContext } from '../state/StateContext' 
+import { FaGem, FaPaperPlane, FaWhatsapp } from 'react-icons/fa'
+import { useStateContext } from '../state/StateContext'
 import { MdChangeCircle } from 'react-icons/md'
 // import StarredBar from '../components/StarredBar'
 
@@ -23,10 +23,11 @@ const Index = () => {
         <div className="index-page">
             <div className="fixed-top">
                 {
-                    sh > 550 &&
-                    <div className="slideIn">
-                        <Nav />
-                    </div>
+                    sh > 550 ?
+                        <div className="slideIn">
+                            <Nav />
+                        </div>
+                        : <NavGeneric />
                 }
             </div>
             <header id="header" className="header d-flex flex-column justify-content-center">
@@ -201,4 +202,62 @@ const Replacer = ({ arr }) => {
         setTimeout(() => setShow(true), 100)
     }, [toPop])
     return show ? <span className="typed slideUp">{arr[i]} </span> : ''
+}
+
+const NavGeneric = () => {
+    const [show, setShow] = useState(false)
+    const { didShow, setDidShow } = useStateContext()
+
+    useEffect(() => {
+        !didShow && (() => {
+            setTimeout(() => {
+                setShow(true)
+            }, 3000);
+            setTimeout(() => {
+                setShow(false)
+            }, 8000);
+            setDidShow(true)
+        })()
+    }, [])
+
+
+    return <div className="d-flex" onMouseEnter={() => { setShow(true) }} onMouseLeave={() => setTimeout(() => setShow(false), 300)}>
+        <Delay delay={1800}>
+            <div className="mx-auto mt-3" >
+                <img src="https://res.cloudinary.com/dqbgai7xd/image/upload/e_improve,e_sharpen/v1723495167/WhatsApp_Image_2024-08-12_at_18.23.41_1_ezuolb.jpg" alt="CollinsCuts Logo" about='CollinsCuts logo image. CollinsCuts makes facinating and captivating videos for his clients. CollinsCuts delivers from animation to video editing to motion graphic, you name it' width={'80px'} className=' rounded slideUp' />
+            </div>
+        </Delay>
+        <div className='d-flex' style={{
+            borderRadius: '8px',
+            position: 'absolute',
+            left: '0px',
+            right: '0px'
+        }}>
+            <nav className="navbar text-light custom-navmenu pt-0 growIn mx-auto" style={{
+                transition: 'all, .3s',
+                borderRadius: '8px',
+                position: 'relative',
+                top: show ? '80px' : '-100px',
+            }}>
+                <div className="container pt-4 ">
+                    <div className="ms-auto me-2 ">
+                        {
+                            show && <Delay inline={true} delay={300}><Link to={'/creations'} className='me-1 rounded btn slideUp'>Creations</Link></Delay>
+                        }
+                        {
+                            show && <Delay inline={true} delay={400}> <Link to={'/#services'} className='me-1 rounded btn slideUp' onClick={() => setTimeout(() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' }), 300)}>Services</Link></Delay>
+                        }
+                        {
+                            show && <Delay inline={true} delay={500}><Link to={'/contact'} className='me-1 rounded btn slideUp'>Contact</Link></Delay>
+                        }
+                        {
+                            show && <Delay delay={700}>
+                                <Link to={'/contact'} className='ms-1 rounded btn slideUp bg-light text-dark d-block'><FaPaperPlane style={{ rotate: '12deg' }} className='icon me-1' /> Make this day memorable </Link>
+                            </Delay>
+                        }
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
 }
