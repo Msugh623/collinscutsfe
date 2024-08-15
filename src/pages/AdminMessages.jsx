@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react'
 import { useStateContext } from '../state/StateContext'
 import Nav from '../components/Nav'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import api from '../../axios/api'
 import { toast } from 'react-toastify'
 import { FaTrash } from 'react-icons/fa'
 import { BiChalkboard, BiLink, BiX } from 'react-icons/bi'
 
 const AdminMessages = () => {
-    const { messages, setErr, setMessages, setPop, pop } = useStateContext()
+    const { messages, setErr, setMessages, setPop } = useStateContext()
     const getMessages = async () => {
         try {
             const res = await api.get('/rq/messages')
             setMessages(res.data)
         } catch (err) {
-            setErr('X ERROR: ' + err.message)
+            setErr('X ERROR: ' + err?.response?.data?.message || err.message)
         }
     }
 
@@ -40,9 +40,9 @@ const AdminMessages = () => {
                     </div>
                     <div id="portfolio-grid" className="row no-gutter" data-aos="fade-up" data-aos-delay="200">
                         {messages.map(msg => {
-                            return <div key={msg.id} className='tem web col-sm-6 col-lg-4 mb-4' >
+                            return <div key={msg.id} className={` web col-sm-6 col-lg-4 mb-4 `} >
                                 <Link onClick={() => setPop(<Message message={msg} />)} className="item-wrap rounded  growUp" >
-                                    <div className='shadow-lg rounded'>
+                                    <div className={`${!msg?.isRead && 'border border-danger'} shadow-lg rounded`}>
                                         <div className="p-2 ">
                                             <h5 className=''>{msg?.fullname}</h5>
                                             <h6 className="">
@@ -74,18 +74,16 @@ export default AdminMessages
 
 const Message = ({ message }) => {
     const { setPop, setMessages } = useStateContext()
-    const navigate = useNavigate()
 
     const read = async () => {
         try {
-            const _ = await api.put('/rq/messages/' + message.id, {
+            const res = await api.put('/rq/messages/' + message.id, {
                 ...message,
                 isRead: true
             })
-            const res = await api.get('/rq/messages')
             setMessages(res.data)
         } catch (err) {
-            setErr('X ERROR: ' + err.message)
+            setErr('X ERROR: ' + ree?.response?.data?.message || err.message)
         }
     }
 
@@ -107,10 +105,9 @@ const Message = ({ message }) => {
                             const tst = toast('deleting...', { autoClose: false })
                             try {
                                 const _ = await api.delete('/rq/messages/' + message?.id)
-                                navigate(-1, { replace: true })
                                 setPop('')
                             } catch (err) {
-                                toast.error(`ERROR: ${err.message}`)
+                                toast.error(`ERROR: ${err?.response?.data?.message || err.message}`)
                             } finally {
                                 toast.dismiss(tst)
                             }

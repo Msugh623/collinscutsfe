@@ -19,7 +19,7 @@ const Creations = () => {
         setPrs([])
         setTimeout(() => setPrs(creations.filter(cr => cr.category == filter)), 5)
       })()
-  }, [filter, creations, location.href])
+  }, [filter, creations])
 
   useEffect(() => {
     setFilter(location.href.split('#')[1] || 'All');
