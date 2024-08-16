@@ -9,7 +9,7 @@ const Creations = () => {
   const { creations, fetchRsc, filters } = useStateContext()
 
   const [prs, setPrs] = useState(creations)
-  const [filter, setFilter] = useState(('' + location.href.split('#')[1]).replace('%20', ' ') || 'All')
+  const [filter, setFilter] = useState(( location.href.split('#')[1]||'').replace('%20', ' ') || 'All')
 
 
   useEffect(() => {
